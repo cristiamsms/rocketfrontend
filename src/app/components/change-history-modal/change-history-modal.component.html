@@ -1,0 +1,14 @@
+<section>
+    <h1>Historial de cambios para {{ data.productName }}</h1>
+    <div>
+      <ul *ngFor="let historial of data.history">
+        <li class="change-history-item">
+          <h2>Fecha de Cambio: {{ historial.fechaCambio |  date:"short" }}</h2>
+          <ul class="sub-items">
+            <li><strong>Precio:</strong> {{ historial.precioAnterior }}</li>
+            <li><strong>Stock:</strong> {{ historial.stockAnterior }}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>

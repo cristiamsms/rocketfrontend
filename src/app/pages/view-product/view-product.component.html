@@ -1,0 +1,47 @@
+<section>
+  <mat-card class="product-card_container">
+    <img
+      mat-card-image
+      [src]="product.image"
+      alt="{{ product.name }}"
+      class="product-image"
+    />
+
+    <div>
+      <mat-card-header>
+        <mat-card-title>
+          <h1>{{ product.name }}</h1></mat-card-title
+        >
+        <mat-card-subtitle
+          ><span>sku</span>
+          <h2>{{ product.sku }}</h2></mat-card-subtitle
+        >
+      </mat-card-header>
+
+      <mat-card-content>
+        <span>Descripcion</span>
+        <h2>
+          {{ product.description }}
+        </h2>
+        <span>Etiquetas</span>
+        <div class="labels">
+          <ul>
+            <li *ngFor="let label of product.labels">
+              {{ label }}
+            </li>
+          </ul>
+        </div>
+        <span>Stock</span>
+        <h2>
+          {{ product.stock }}
+        </h2>
+        <span>Precio</span>
+        <h2>{{ product.price }}</h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="button" (click)="openChangeHistoryModal()" >Ver historal de cambios</button>
+        <button type="button" [routerLink]="['/products']">Volver</button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</section>

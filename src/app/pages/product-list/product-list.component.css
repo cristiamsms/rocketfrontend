@@ -1,0 +1,79 @@
+/* Estilo para las imágenes de productos */
+.product-image {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Estilos para el contenedor principal (section) */
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para el contenedor de búsqueda (search-container) */
+.search-container {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para los campos de entrada (input) y botones (button) en la sección */
+section input,
+button {
+  background: transparent;
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem;
+  border: 1px solid #4a23f6;
+  outline: none;
+}
+
+/* Estilos para el botón cuando se coloca el cursor sobre él */
+button:hover {
+  color: white;
+  cursor: pointer;
+  background: #4a23f6;
+}
+
+/* Estilos para el contenedor de artículos (article) */
+article {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Estilos para las tarjetas de productos (mat-card) */
+mat-card {
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+  width: 300px;
+  display: inline-block;
+}
+
+/* Ocultar la etiqueta de tamaño de página en el paginador */
+.mat-paginator-page-size-label {
+  display: none;
+}
+
+/* Estilos para pantallas pequeñas (máximo ancho de 600px) */
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+    padding: 1rem 0px;
+  }
+  section input,
+  button {
+    padding: 1rem 0px;
+    width: 100%;
+  }
+}

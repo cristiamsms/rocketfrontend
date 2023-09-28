@@ -1,0 +1,55 @@
+.container-edit {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section input,
+button {
+  background: transparent;
+  width: 15rem;
+  padding: 1rem;
+  border: 1px solid #4a23f6;
+  outline: none;
+}
+
+button:hover {
+  color: white;
+  cursor: pointer;
+  background: #4a23f6;
+}
+section div {
+  display: flex;
+  width: 100%;
+  margin: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+mat-form-field {
+  width: 100%;
+  background-color: transparent !important;
+}
+mat-chip-grid {
+  background-color: transparent;
+}
+
+mat-form-field button,
+mat-form-field input {
+  border: none;
+}
+
+mat-form-field button:hover {
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  section input,
+  button {
+    width: 100%;
+  }
+  section div {
+    flex-direction: column;
+    margin: 1rem 0px;
+  }
+}

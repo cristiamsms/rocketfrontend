@@ -1,0 +1,101 @@
+<section class="container-edit">
+  <h1>{{ productId ? "Edita Tu Producto" : "Crea Tu Producto" }}</h1>
+  <form (submit)="onSubmit()">
+    <div>
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="product.name"
+        name="name"
+        placeholder="Nombre del articulo"
+        required
+      />
+    </div>
+    <div>
+      <label for="description">Descripcion:</label>
+      <input
+        type="text"
+        id="description"
+        [(ngModel)]="product.description"
+        name="description"
+        placeholder="descripcion del articulo"
+        required
+      />
+    </div>
+    <div>
+      <label for="sku">Sku:</label>
+      <input
+        type="text"
+        id="sku"
+        [(ngModel)]="product.sku"
+        name="sku"
+        placeholder="identificador"
+        required
+      />
+    </div>
+    <div>
+      <label for="image">Imagen:</label>
+      <input
+        type="text"
+        id="image"
+        [(ngModel)]="product.image"
+        name="image"
+        placeholder="inserte la url de una imagen"
+        required
+      />
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Etiquetas</mat-label>
+        <mat-chip-grid #chipGrid>
+          <mat-chip-row
+            *ngFor="let label of product.labels"
+            (removed)="removeLabel(label)"
+          >
+            {{ label }}
+            <button
+              matChipRemove
+              [attr.aria-label]="'Eliminar etiqueta ' + label"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input
+          placeholder="Nueva etiqueta..."
+          [matChipInputFor]="chipGrid"
+          (matChipInputTokenEnd)="addLabel($event)"
+          [formControl]="labelControl"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <label for="price">Precio:</label>
+      <input
+        type="number"
+        id="price"
+        [(ngModel)]="product.price"
+        name="price"
+        placeholder="precio del producto"
+        required
+      />
+    </div>
+    <div>
+      <label for="stock">Stock:</label>
+      <input
+        type="number"
+        id="stock"
+        [(ngModel)]="product.stock"
+        name="stock"
+        placeholder="existencia del producto"
+        required
+      />
+    </div>
+    <!-- Agregar campos para la descripción, SKU, imagen, etiquetas, precio y stock -->
+    <button type="submit">
+      {{ productId ? "Guardar Cambios" : "Crear Producto" }}
+    </button>
+    <button type="button" [routerLink]="['/products/']">Volver</button>
+  </form>
+</section>

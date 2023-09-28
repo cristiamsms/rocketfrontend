@@ -1,0 +1,42 @@
+/* Estilo para la sección principal */
+section {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  /* Estilo para el título principal */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para cada elemento del historial de cambios */
+  .change-history-item {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilo para la lista de "Precio" y "Stock" */
+  .sub-items {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  /* Estilo para cada elemento de la lista */
+  .sub-items li {
+    margin-bottom: 5px;
+  }
+  
+  /* Estilo para resaltar "Precio" y "Stock" */
+  .sub-items strong {
+    font-weight: bold;
+  }
+  
+  /* Estilo para dar espacio entre los elementos */
+  .sub-items li:not(:last-child) {
+    margin-bottom: 5px;
+  }
