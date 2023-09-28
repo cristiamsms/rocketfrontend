@@ -56,18 +56,18 @@ export class ViewProductComponent implements OnInit {
       this.productService
         .getHistoryById(this.productId)
         .subscribe((data: any) => {
-          console.log(data)
+         
           // Asignar los datos del producto recibidos desde el servicio al objeto product
           const dialogRef = this.dialog.open(ChangeHistoryModalComponent, {
             width: '800px', // Personaliza el ancho del modal según tus necesidades
-            data: { // Puedes pasar datos adicionales al modal si es necesario
+            data: {
               productName: this.product.name,
               history:data.historial
             },
           });
       
           dialogRef.afterClosed().subscribe((result) => {
-            console.log('El modal se cerró');
+      
           });
         });
     }
