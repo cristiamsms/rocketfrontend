@@ -10,6 +10,8 @@
         name="name"
         placeholder="Nombre del articulo"
         required
+      
+      
       />
     </div>
 
@@ -22,6 +24,7 @@
         name="description"
         placeholder="descripcion del articulo"
         required
+      
       />
     </div>
     <div>
@@ -33,6 +36,7 @@
         name="sku"
         placeholder="identificador"
         required
+      
       />
     </div>
     <div>
@@ -44,6 +48,7 @@
         name="image"
         placeholder="inserte la url de una imagen"
         required
+       
       />
     </div>
     <div>
@@ -80,6 +85,7 @@
         name="price"
         placeholder="precio del producto"
         required
+       
       />
     </div>
     <div>
@@ -91,9 +97,10 @@
         name="stock"
         placeholder="existencia del producto"
         required
+        
       />
     </div>
-
+    <div class="error" *ngIf="requiredFieldsError">{{ requiredFieldsError }}</div>
     <button type="submit">
       {{ productId ? "Guardar Cambios" : "Crear Producto" }}
     </button>

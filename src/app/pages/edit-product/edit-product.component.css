@@ -5,6 +5,17 @@
   justify-content: center;
   align-items: center;
 }
+
+.error {
+  color: red; /* Color del texto en rojo */
+  font-size: 14px; /* Tamaño de fuente */
+  margin-top: 4px; /* Margen superior para separar el mensaje del campo */
+}
+
+/* Estilos para resaltar el campo con error */
+.input-error {
+  border: 1px solid red; /* Borde rojo para el campo con error */
+}
 section input,
 button {
   background: transparent;

@@ -13,7 +13,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class EditProductComponent implements OnInit {
   productId?: string;
-  product: Product = {
+  product: Product |any = {
     name: '',
     description: '',
     sku: '',
@@ -23,7 +23,8 @@ export class EditProductComponent implements OnInit {
     stock: 0,
   };
   labelControl = new FormControl(); // Define un FormControl para las etiquetas
-
+  public requiredFieldsError:string = '';
+  public campoFaltante: string = '';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -64,6 +65,28 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit() {
+  // Reinicia los mensajes de error y el campo faltante
+  this.requiredFieldsError = '';
+  this.campoFaltante = '';
+
+  // Define un objeto con los nombres de los campos requeridos y sus mensajes de error
+  const requiredFields: Record<string, string> = {
+    name: 'Nombre',
+    description: 'Descripción',
+    sku: 'SKU',
+    image: 'Imagen',
+    price: 'Precio',
+    stock: 'Stock'
+  };
+
+  // Recorre el objeto de campos requeridos
+  for (const fieldName in requiredFields) {
+    if (!this.product[fieldName]) {
+      this.requiredFieldsError = `El campo ${requiredFields[fieldName]} es requerido.`;
+      this.campoFaltante = fieldName;
+      return; // Detén la validación en el primer campo faltante que encuentres
+    }
+  }
     if (this.productId) {
       this.productService.editProduct(this.product).subscribe((data: any) => {
         // Manejar la respuesta del servidor (éxito o error)
