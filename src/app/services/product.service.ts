@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Product } from '../shared/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'https://rocketbackend-bf9aa0065d67.herokuapp.com/api/product'; // Reemplaza con la URL de tu backend
+  private baseUrl =
+    'https://rocketbackend-bf9aa0065d67.herokuapp.com/api/product'; // Reemplaza con la URL de tu backend
 
   constructor(private http: HttpClient) {}
 
@@ -29,16 +31,16 @@ export class ProductService {
   // Obtener el historial de un producto por su ID
   getHistoryById(id: string) {
     // Realizar una solicitud GET al endpoint específico del historial del producto
-    return this.http.get(`${this.baseUrl}/history/${id}`);
+    return this.http.get(`${this.baseUrl}/history/s${id}`);
   }
   // Agregar un nuevo producto
-  addProduct(productData: any) {
+  addProduct(productData: Product) {
     // Realizar una solicitud POST para agregar un nuevo producto
     return this.http.post(`${this.baseUrl}`, productData);
   }
 
   // Editar un producto existente
-  editProduct(productData: any) {
+  editProduct(productData: Product) {
     // Realizar una solicitud PUT para editar un producto
     return this.http.put(`${this.baseUrl}/edit/`, productData);
   }

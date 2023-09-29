@@ -5,7 +5,24 @@ import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { RespPostOrPut } from '../edit-product/edit-product.component';
+export interface RespGetProducts {
+  ok: boolean;
+  products: Products;
+}
 
+export interface Products {
+  docs: Product[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: null;
+  nextPage: number;
+}
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -38,7 +55,8 @@ export class ProductListComponent implements OnInit {
   getProducts() {
     this.productService
       .getProducts(this.limit, this.page, this.searchTerm)
-      .subscribe((data: any) => {
+      .subscribe((data: RespGetProducts | any) => {
+        console.log(data);
         // Actualizar la lista de productos y la cantidad total
         this.length = data.products.totalDocs;
         this.products = data.products.docs;
@@ -46,7 +64,7 @@ export class ProductListComponent implements OnInit {
   }
 
   // Método para aplicar un filtro de búsqueda
-  applyFilter(event: any) {
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.searchTerm = filterValue;
     this.getProducts(); // Actualizar la lista de productos con el término de búsqueda
@@ -67,7 +85,7 @@ export class ProductListComponent implements OnInit {
         if (productId) {
           this.productService
             .deleteProduct(productId)
-            .subscribe((data: any) => {
+            .subscribe((data: RespPostOrPut | any) => {
               // Manejar la respuesta del servidor (éxito o error)
               if (data.ok) {
                 this.notificationService.showSuccess(data.msg);
