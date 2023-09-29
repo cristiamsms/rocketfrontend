@@ -7,7 +7,7 @@ import { Product } from '../shared/product.model';
 })
 export class ProductService {
   private baseUrl =
-    'https://rocketbackend-bf9aa0065d67.herokuapp.com/api/product'; // Reemplaza con la URL de tu backend
+    'http://localhost:8080/api/product'; // Reemplaza con la URL de tu backend
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +31,7 @@ export class ProductService {
   // Obtener el historial de un producto por su ID
   getHistoryById(id: string) {
     // Realizar una solicitud GET al endpoint específico del historial del producto
-    return this.http.get(`${this.baseUrl}/history/s${id}`);
+    return this.http.get(`${this.baseUrl}/history/${id}`);
   }
   // Agregar un nuevo producto
   addProduct(productData: Product) {
