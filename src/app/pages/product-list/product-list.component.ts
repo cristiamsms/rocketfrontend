@@ -56,7 +56,7 @@ export class ProductListComponent implements OnInit {
     this.productService
       .getProducts(this.limit, this.page, this.searchTerm)
       .subscribe((data: RespGetProducts | any) => {
-        console.log(data);
+    
         // Actualizar la lista de productos y la cantidad total
         this.length = data.products.totalDocs;
         this.products = data.products.docs;
@@ -67,6 +67,7 @@ export class ProductListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.searchTerm = filterValue;
+    this.page=0;
     this.getProducts(); // Actualizar la lista de productos con el término de búsqueda
   }
 
@@ -90,14 +91,7 @@ export class ProductListComponent implements OnInit {
               if (data.ok) {
                 this.notificationService.showSuccess(data.msg);
                 // Redirigir a la lista de productos u otra página
-                const index = this.products.findIndex(
-                  (product) => product._id === productId
-                );
-
-                // Si se encuentra el índice, elimina el producto de la lista
-                if (index !== -1) {
-                  this.products.splice(index, 1);
-                }
+                this.getProducts()
               } else {
                 this.notificationService.showError(data.msg);
               }
